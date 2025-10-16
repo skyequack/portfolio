@@ -205,7 +205,7 @@ export default function Contact() {
                   <div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">LinkedIn</div>
                     <div className="font-semibold text-gray-900 dark:text-white">
-                      /in/yourprofile
+                      /in/omermohammed-
                     </div>
                   </div>
                 </a>
