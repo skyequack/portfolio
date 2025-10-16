@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -42,32 +41,30 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button
             onClick={() => scrollToSection("#home")}
-            className="text-xl font-bold text-gray-900 dark:text-white font-mono"
+            className="text-2xl font-bold text-gray-900 dark:text-white font-mono"
           >
-            &lt;ROBOT/&gt;
+            &lt;OMER/&gt;
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium"
+                className="text-lg text-gray-600 dark:text-gray-400 hover:text-white dark:hover:text-white hover:bg-blue-500 dark:hover:bg-blue-500 hover:-translate-y-1 transition-all duration-200 font-medium px-4 py-2 rounded-lg"
               >
                 {item.name}
               </button>
             ))}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button & Theme Toggle */}
-          <div className="flex md:hidden items-center gap-3">
-            <ThemeToggle />
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-900 dark:text-white"

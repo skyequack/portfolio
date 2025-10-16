@@ -10,7 +10,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative px-4">
+    <section className="min-h-screen flex flex-col items-center justify-center relative px-4 bg-gradient-to-b from-blue-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950">
       {/* Animated Robot SVG - Optional minimal graphic */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -110,7 +110,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
         onClick={() => scrollToSection("projects")}
-        className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+        className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-2xl transition-colors duration-300 shadow-lg hover:shadow-xl"
       >
         See My Work
       </motion.button>

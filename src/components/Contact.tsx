@@ -160,7 +160,7 @@ export default function Contact() {
               <div className="space-y-4">
                 {/* Email */}
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:omer.mohammd.m@gmail.com"
                   className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
                 >
                   <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
@@ -169,14 +169,14 @@ export default function Contact() {
                   <div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Email</div>
                     <div className="font-semibold text-gray-900 dark:text-white">
-                      your.email@example.com
+                      omer.mohammd.m@gmail.com
                     </div>
                   </div>
                 </a>
 
                 {/* GitHub */}
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/skyequack"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
@@ -187,14 +187,14 @@ export default function Contact() {
                   <div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">GitHub</div>
                     <div className="font-semibold text-gray-900 dark:text-white">
-                      @yourusername
+                      @skyequack
                     </div>
                   </div>
                 </a>
 
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://in.linkedin.com/in/omermohammed-"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"

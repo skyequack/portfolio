@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Wrench, Cpu, Code } from "lucide-react";
+import Image from "next/image";
 
 export default function About() {
   const skills = [
@@ -36,20 +37,17 @@ export default function About() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Profile Image/Avatar Placeholder */}
+            {/* Profile Image */}
             <div className="md:col-span-1">
-              <div className="aspect-square bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
-                <div className="text-white text-6xl font-bold">
-                  {/* Placeholder - Replace with your actual photo */}
-                  <svg
-                    viewBox="0 0 100 100"
-                    className="w-32 h-32 text-white opacity-50"
-                    fill="currentColor"
-                  >
-                    <circle cx="50" cy="35" r="15" />
-                    <path d="M 30 65 Q 30 50 50 50 Q 70 50 70 65 Q 70 80 50 90 Q 30 80 30 65" />
-                  </svg>
-                </div>
+              <div className="aspect-square rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src="/images/me.png"
+                  alt="Profile picture"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
             </div>
 
