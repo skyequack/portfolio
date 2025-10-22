@@ -33,7 +33,7 @@ const experiences: Experience[] = [
     title: "Robotics Engineering Intern",
     organization: "Orangewood Labs",
     duration: "Jun 2024 - Jul 2024",
-    description: "Worked on LLM-based developing control systems for industrial robotic arms",
+    description: "Worked on developing LLM-based control systems for industrial robotic arms",
     highlights: [
       "Implemented trajectory planning algorithms in ROS2",
       "Reduced motion planning time by 40% using optimized algorithms",

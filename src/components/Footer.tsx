@@ -12,7 +12,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-4">
             <p className="text-sm font-mono">
-              Designed & Developed by You
+              Designed & Developed by Omer
             </p>
           </div>
         </div>

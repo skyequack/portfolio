@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 interface Project {
   id: number;
@@ -18,11 +19,11 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
-        title: "Silverhand: 3D Printed Hand Exoskeleton",
+        title: "Silverhand: Hand Exoskeleton",
         description: "3-fingered exoskeleton for arthritis assistance, controlled by EMG electrodes",
         longDescription: "Developed a 3-fingered hand exoskeleton designed to assist individuals with arthritis. The device uses EMG electrodes to detect muscle signals, enabling intuitive control of finger movements. The exoskeleton provides mechanical assistance to improve grip strength and dexterity, helping users perform daily tasks with greater ease.",
         tags: ["Embedded", "Sensor Fusion", "C++", "Control"],
-        image: "/api/placeholder/600/400",
+        image: "/images/silverhand.jpeg",
         github: "https://github.com",
     },
     {
@@ -30,8 +31,8 @@ const projects: Project[] = [
         title: "Crabby",
         description: "12-DOF legged robot with inverse kinematics and gait planning",
         longDescription: "Designed and built a 12-DOF quadruped robot with custom inverse kinematics solver. Implemented multiple gait patterns including trot, walk, and crawl. Used ROS2 for control architecture and Gazebo for simulation.",
-        tags: ["ROS2", "CAD", "Inverse Kinematics", "Embedded"],
-        image: "/api/placeholder/600/400",
+        tags: ["ROS2", "CAD", "Inverse Kinematics"],
+        image: "/images/crabby.jpeg",
         github: "https://github.com",
     },
     {
@@ -40,27 +41,26 @@ const projects: Project[] = [
         description: "3D-printed prosthetic with EMG control and force feedback",
         longDescription: "Developed a low-cost 3D-printed prosthetic hand controlled by EMG signals. Integrated force sensors for grip control and haptic feedback system for user awareness.",
         tags: ["CAD", "EMG", "Arduino", "Signal Processing"],
-        image: "/api/placeholder/600/400",
+        image: "https://cdn.sanity.io/images/6nd5koax/production/5bdf975cf1cd40e11b9f13a17ebde2a1864cfdd8-829x912.jpg?fit=max&auto=format",
         github: "https://github.com",
     },
     {
         id: 4,
-        title: "SLAM Navigation Bot",
-        description: "Autonomous mobile robot with LiDAR-based SLAM",
-        longDescription: "Built an autonomous navigation system using ROS2 Nav2 stack. Implemented SLAM with RPLiDAR for real-time mapping and localization in unknown environments.",
-        tags: ["ROS2", "SLAM", "LiDAR", "Python"],
-        image: "/api/placeholder/600/400",
+        title: "RoboSoccer",
+        description: "Remote-controlled soccer robots for Technoxian 2023 - 2nd Runner Up",
+        longDescription: "Designed and built three specialized remote-controlled robots for competitive soccer: Bull Bot for heavy defending, Striker Bot with plunger for agile shooting, and Goalkeeper Bot with 3-wheel omni drive for holonomic movement. Competed at Technoxian 2023 and secured 2nd Runner Up position.",
+        tags: ["Omni Drive", "RoboSoccer", "Remote Control", "Competition"],
+        image: "/images/robosoccer.jpeg",
         github: "https://github.com",
     },
     {
         id: 5,
-        title: "Robotic Arm Manipulator",
-        description: "6-DOF robotic arm with computer vision for object manipulation",
-        longDescription: "Designed and fabricated a 6-DOF robotic arm with integrated computer vision for pick-and-place tasks. Implemented trajectory planning and collision avoidance algorithms.",
-        tags: ["Computer Vision", "CAD", "ROS2", "OpenCV"],
-        image: "/api/placeholder/600/400",
+        title: "Peeker",
+        description: "Compact surveillance robot with continuous track drive and self-righting mechanism",
+        longDescription: "Peeker is a compact and mobile robotic system equipped with continuous track drive technology, specifically designed for surveillance and scouting purposes. Its portability is enhanced by its lightweight design, while its sturdy construction ensures durability, enabling it to endure rough handling, such as throws and drops. Notably, Peeker introduces an innovative 'flipping mechanism,' enabling the robot to autonomously correct itself in the event of overturning.",
+        tags: ["Surveillance", "Track Drive", "Autonomous", "Durability"],
+        image: "/images/peeker.png",
         github: "https://github.com",
-        demo: "https://demo.com",
     },
     {
         id: 6,
@@ -104,18 +104,13 @@ export default function Projects() {
                 className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
               >
                 {/* Project Image */}
-                <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600">
-                    <svg
-                      viewBox="0 0 100 100"
-                      className="w-20 h-20"
-                      fill="currentColor"
-                    >
-                      <rect x="30" y="40" width="40" height="35" rx="2" />
-                      <circle cx="42" cy="55" r="4" />
-                      <circle cx="58" cy="55" r="4" />
-                    </svg>
-                  </div>
+                <div className="relative h-80 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
                   {/* Hover Overlay */}
                   <div
                     className={`absolute inset-0 bg-black/70 flex items-center justify-center transition-opacity duration-300 ${

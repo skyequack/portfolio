@@ -47,7 +47,7 @@ export default function Navigation() {
             onClick={() => scrollToSection("#home")}
             className="text-2xl font-bold text-gray-900 dark:text-white font-mono"
           >
-            &lt;OMER/&gt;
+            &lt; OMER/ &gt;
           </button>
 
           {/* Desktop Navigation */}

@@ -13,12 +13,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Robotics Engineer",
+  title: "Omer | Robotics Engineer",
   description: "Engineering student specializing in robotics, mechanical design, electronics, and software. Passionate about legged robots and robotic prosthetics.",
   keywords: ["robotics", "engineering", "mechanical", "electronics", "software", "legged robots", "prosthetics"],
   authors: [{ name: "Omer Mohammed" }],
   openGraph: {
-    title: "Robotics Engineer",
+    title: "Omer | Robotics Engineer",
     description: "I build machines that move.",
     type: "website",
   },
