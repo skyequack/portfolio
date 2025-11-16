@@ -99,10 +99,10 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* Section Header */}
-          <div className="mb-12 sm:mb-16">
+          {/* Section Header - More compact on mobile */}
+          <div className="mb-6 sm:mb-12 md:mb-16">
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-white"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 text-white"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -111,14 +111,14 @@ export default function Projects() {
               Projects
             </motion.h2>
             <motion.div 
-              className="h-1.5 w-24 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mb-4"
+              className="h-1.5 w-20 sm:w-24 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mb-2 sm:mb-4"
               initial={{ opacity: 0, width: 0 }}
-              whileInView={{ opacity: 1, width: 96 }}
+              whileInView={{ opacity: 1, width: 80 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             />
             <motion.p 
-              className="text-base sm:text-lg text-gray-300"
+              className="text-sm sm:text-base md:text-lg text-gray-300"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -128,49 +128,50 @@ export default function Projects() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.08,
+                  duration: 0.5, 
+                  delay: index * 0.05,
                   ease: [0.25, 0.1, 0.25, 1]
                 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "-30px" }}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
                 onClick={() => setSelectedProject(project)}
                 className="group relative cursor-pointer"
               >
-                {/* Glow effect on hover - more prominent on mobile */}
-                <div className={`absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-[20px] opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
+                {/* Subtle glow - desktop only with media query */}
+                <div className="absolute -inset-[2px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl opacity-0 md:group-hover:opacity-20 blur-lg transition-opacity duration-500" />
                 
-                <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 rounded-[18px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-700/50 group-hover:border-blue-500/50 backdrop-blur-sm">
+                <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:hover:shadow-2xl transition-all duration-500 border border-gray-700/50 md:hover:border-blue-500/50 backdrop-blur-sm">
                   {/* Featured Badge */}
                   {project.featured && (
                     <motion.div 
                       initial={{ scale: 0, rotate: -180 }}
                       whileInView={{ scale: 1, rotate: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.08 + 0.3 }}
-                      className="absolute top-3 right-3 z-20"
+                      transition={{ duration: 0.5, delay: index * 0.05 + 0.2 }}
+                      className="absolute top-2 right-2 sm:top-3 sm:right-3 z-20"
                     >
-                      <div className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg flex items-center gap-1.5 animate-pulse">
-                        <span className="text-sm">⭐</span>
-                        <span>Featured</span>
+                      <div className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full shadow-lg flex items-center gap-1">
+                        <span className="text-xs">⭐</span>
+                        <span className="hidden sm:inline">Featured</span>
                       </div>
                     </motion.div>
                   )}
 
-                  {/* Project Image with enhanced mobile experience */}
-                  <div className="relative h-52 sm:h-56 md:h-60 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+                  {/* Project Image - Reduced height for better fold */}
+                  <div className="relative h-[180px] sm:h-[200px] md:h-[220px] bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                      className="object-cover md:group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     
                     {/* Floating action button - desktop only */}
@@ -179,91 +180,79 @@ export default function Projects() {
                         e.stopPropagation();
                         setSelectedProject(project);
                       }}
-                      className={`hidden sm:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md text-gray-900 dark:text-white p-4 rounded-full shadow-2xl transition-all duration-300 ${
+                      className={`hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md text-gray-900 p-3 rounded-full shadow-xl transition-all duration-300 ${
                         hoveredProject === project.id ? "opacity-100 scale-100" : "opacity-0 scale-75 pointer-events-none"
                       }`}
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <Info className="w-6 h-6" />
+                      <Info className="w-5 h-5" />
                     </motion.button>
 
-                    {/* Title overlay on image - mobile optimized */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 bg-gradient-to-t from-black/80 to-transparent">
-                      <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-lg line-clamp-2 mb-1">
+                    {/* Gradient overlay for text readability + Title */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-white drop-shadow-xl line-clamp-2">
                         {project.title}
                       </h3>
                     </div>
                   </div>
 
-                  {/* Project Content - cleaner mobile layout */}
-                  <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
+                  {/* Project Content - Reduced padding on mobile */}
+                  <div className="p-3 sm:p-4 md:p-5 space-y-2.5 sm:space-y-3">
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
 
-                    {/* Tags - more compact on mobile */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {project.tags.slice(0, 4).map((tag, tagIndex) => (
+                    {/* Tags - Consistent neutral style, max 3 on mobile, 2 rows */}
+                    <div className="flex flex-wrap gap-1 sm:gap-1.5 max-h-[3.5rem] overflow-hidden">
+                      {project.tags.slice(0, 3).map((tag, tagIndex) => (
                         <motion.span
                           key={tag}
                           initial={{ opacity: 0, scale: 0 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: index * 0.08 + tagIndex * 0.05 }}
-                          className="px-2.5 sm:px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 text-[11px] sm:text-xs font-medium rounded-lg border border-blue-500/30 backdrop-blur-sm"
+                          transition={{ duration: 0.2, delay: index * 0.05 + tagIndex * 0.03 }}
+                          className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-gray-700/30 text-gray-300 text-[10px] sm:text-xs font-medium rounded-md border border-gray-600/30"
                         >
                           {tag}
                         </motion.span>
                       ))}
-                      {project.tags.length > 4 && (
-                        <span className="px-2.5 py-1 bg-gray-700/50 text-gray-400 text-[11px] sm:text-xs font-medium rounded-lg border border-gray-600/30">
-                          +{project.tags.length - 4}
+                      {project.tags.length > 3 && (
+                        <span className="px-2 py-0.5 bg-gray-700/50 text-gray-400 text-[10px] sm:text-xs font-medium rounded-md">
+                          +{project.tags.length - 3}
                         </span>
                       )}
                     </div>
 
-                    {/* Action buttons - better mobile touch targets */}
-                    <div className="flex items-center gap-2 sm:gap-3 pt-3 border-t border-gray-700/50">
-                      {project.github && (
+                    {/* Quick Actions - Equal width, Details primary */}
+                    <div className="grid grid-cols-2 gap-2 pt-2 sm:pt-3 border-t border-gray-700/50">
+                      {project.github ? (
                         <motion.a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex items-center gap-1.5 px-3 py-2 bg-gray-700/50 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm font-medium border border-gray-600/30 hover:border-gray-500"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="flex items-center justify-center gap-1.5 px-2 sm:px-3 py-2 bg-gray-700/40 hover:bg-gray-700/60 text-gray-300 rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium border border-gray-600/30"
                         >
-                          <Github className="w-4 h-4" />
+                          <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           <span>Code</span>
                         </motion.a>
+                      ) : (
+                        <div />
                       )}
-                      {project.demo && (
-                        <motion.a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex items-center gap-1.5 px-3 py-2 bg-blue-600/80 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 text-xs sm:text-sm font-medium border border-blue-500/50 hover:border-blue-400"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          <span>Demo</span>
-                        </motion.a>
-                      )}
+                      
                       <motion.button
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedProject(project);
                         }}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-1.5 px-3 py-2 bg-purple-600/80 hover:bg-purple-600 text-white rounded-lg transition-all duration-300 text-xs sm:text-sm font-medium border border-purple-500/50 hover:border-purple-400 ml-auto"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex items-center justify-center gap-1.5 px-2 sm:px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all duration-200 text-xs sm:text-sm font-semibold shadow-lg shadow-blue-500/20"
                       >
-                        <Info className="w-4 h-4" />
-                        <span className="hidden sm:inline">Details</span>
-                        <span className="sm:hidden">More</span>
+                        <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <span>Details</span>
                       </motion.button>
                     </div>
                   </div>

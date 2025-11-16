@@ -147,6 +147,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbar for horizontal category filters */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hover effects only on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

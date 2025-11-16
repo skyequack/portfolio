@@ -122,7 +122,7 @@ export default function About() {
                 I&apos;m an engineering student with a passion for{" "}
                 <span className="text-blue-600 dark:text-blue-400 font-semibold">robotics</span> and 
                 hands-on problem solving. My work lives at the intersection of mechanical design, 
-                electronics, and software—where ideas become machines that actually work.
+                electronics, and software; where ideas become machines.
               </motion.p>
               
               <motion.p 
@@ -134,7 +134,7 @@ export default function About() {
               >
                 My core interests lie in{" "}
                 <span className="text-purple-600 dark:text-purple-400 font-semibold">legged robots</span> and{" "}
-                <span className="text-purple-600 dark:text-purple-400 font-semibold">robotic prosthetics</span>—
+                <span className="text-purple-600 dark:text-purple-400 font-semibold">robotic prosthetics</span>;
                 systems that require deep integration across disciplines. I believe in learning by building, 
                 failing fast, and iterating until it works.
               </motion.p>
