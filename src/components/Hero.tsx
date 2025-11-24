@@ -143,7 +143,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-5xl md:text-7xl font-bold text-center mb-4 sm:mb-6 text-white leading-tight whitespace-nowrap"
+          className="text-3xl sm:text-5xl md:text-7xl font-bold text-center mb-4 sm:mb-6 text-white leading-tight"
         >
           I build machines that move.
         </motion.h1>
@@ -212,11 +212,11 @@ export default function Hero() {
             
             {/* Interactive button overlay */}
             <button
-              className="absolute inset-0 rounded-lg bg-transparent cursor-pointer"
+              className="absolute inset-0 rounded-lg bg-transparent cursor-pointer flex items-center justify-center"
               aria-label="See My Work"
               type="button"
             >
-              <span className="flex items-center justify-center px-2 sm:px-4 gap-2 rounded-lg text-white text-sm sm:text-base md:text-lg font-semibold tracking-wide">
+              <span className="text-white text-sm sm:text-base md:text-lg font-semibold tracking-wide">
                 See My Work
               </span>
             </button>
@@ -229,7 +229,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-30 left-1/2 -translate-x-1/2 cursor-pointer z-10"
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 cursor-pointer z-10"
         onClick={() => scrollToSection("about")}
       >
         <motion.div
