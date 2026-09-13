@@ -316,7 +316,7 @@ export default function ProjectsPage() {
                       {project.description}
                     </p>
 
-                    {/* Tags */}
+                    {/* Tgs */}
                     <div className="flex flex-wrap gap-2">
                       {project.tags.slice(0, 3).map((tag, i) => (
                         <motion.span
