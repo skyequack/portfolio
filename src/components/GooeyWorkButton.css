@@ -1,0 +1,36 @@
+.gooey-work-button {
+  background: linear-gradient(180deg, rgb(235 244 255 / 14%), transparent 48%, rgb(11 21 37 / 18%));
+  border: 1px solid rgb(215 233 255 / 32%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 38%), inset 0 -1px 0 rgb(157 187 224 / 20%);
+  text-shadow: 0 1px 3px rgb(4 12 24 / 65%);
+  overflow: hidden;
+}
+
+.gooey-work-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgb(237 247 255 / 32%) 48%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 850ms ease;
+  pointer-events: none;
+}
+
+.gooey-work[data-open="true"] .gooey-work-button::before {
+  transform: translateX(120%);
+}
+
+.gooey-work-button > span,
+.gooey-work-button > svg {
+  position: relative;
+}
+
+.gooey-work-droplet {
+  background: radial-gradient(circle at 32% 22%, rgb(255 255 255 / 38%), transparent 58%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gooey-work-button::before {
+    transition: none;
+  }
+}
