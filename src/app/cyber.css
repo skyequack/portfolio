@@ -10,9 +10,12 @@
   --cy-hot: #ff3d6e;
   background: var(--cy-bg);
   color: var(--cy-ink);
-  min-height: 100vh;
   position: relative;
   overflow-x: clip;
+}
+
+main.cy {
+  min-height: 100vh;
 }
 
 .cy-pixel {

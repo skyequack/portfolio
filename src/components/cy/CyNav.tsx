@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -13,7 +14,25 @@ const links = [
 
 export default function CyNav() {
   const pathname = usePathname();
-  const current = pathname === "/" ? "/" : pathname;
+  const [aboutInView, setAboutInView] = useState(false);
+
+  // On the home page, follow the scroll: past the middle of the viewport, "about" is current.
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const update = () => {
+      const about = document.getElementById("about");
+      setAboutInView(!!about && about.getBoundingClientRect().top <= window.innerHeight * 0.5);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [pathname]);
+
+  const current = pathname === "/" ? (aboutInView ? "/#about" : "/") : pathname;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--cy-line)] bg-[#05010a]/70 backdrop-blur-md">
