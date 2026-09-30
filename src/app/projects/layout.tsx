@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import { VT323 } from "next/font/google";
+
+const vt323 = VT323({
+  weight: "400",
+  variable: "--font-vt323",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Projects | Omer | Robotics Engineer",
@@ -11,5 +18,5 @@ export default function ProjectsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <div className={vt323.variable}>{children}</div>;
 }
