@@ -1,11 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import CRTWarp from "@/components/CRTWarp";
-import "./projects.css";
+import CyPage from "@/components/cy/CyPage";
 
 interface Project {
   id: number;
@@ -96,12 +95,6 @@ const categories = [
   { id: "integration", label: "INTEG" },
 ] as const;
 
-const navLinks = [
-  { label: "home", href: "/" },
-  { label: "about", href: "/#about" },
-  { label: "contact", href: "/#contact" },
-];
-
 const pad = (n: number) => String(n).padStart(2, "0");
 
 function Shot({ project, sizes }: { project: Project; sizes: string }) {
@@ -126,7 +119,6 @@ function Shot({ project, sizes }: { project: Project; sizes: string }) {
 }
 
 export default function ProjectsPage() {
-  const reduceMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -164,114 +156,15 @@ export default function ProjectsPage() {
   }, [selectedProject]);
 
   return (
-    <main className="cy">
-      <div className="cy-scan" aria-hidden="true" />
-
-      {/* System bar */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--cy-line)] bg-[#05010a]/80 backdrop-blur-md">
-        <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4 font-mono text-xs uppercase tracking-widest sm:px-6">
-          <span className="flex items-center gap-2 text-[var(--cy-steel)]">
-            <span className="cy-blink h-2 w-2 bg-[var(--cy-hot)]" aria-hidden="true" />
-            <span className="hidden sm:inline">omer://projects</span>
-          </span>
-          <nav aria-label="Site" className="flex items-center gap-1 sm:gap-2">
-            {navLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="px-2 py-1 text-[var(--cy-dim)] transition-colors hover:bg-[var(--cy-steel)] hover:text-[var(--cy-bg)] sm:px-3"
-              >
-                {l.label}
-              </Link>
-            ))}
-            <span
-              className="border border-[var(--cy-line-hi)] px-2 py-1 text-[var(--cy-ink)] sm:px-3"
-              aria-current="page"
-            >
-              projects
-            </span>
-          </nav>
-        </div>
-      </header>
-
-      {/* Header band: the hero's CRT, dimmed and faded out */}
-      <section className="relative overflow-hidden px-4 pb-14 pt-32 sm:px-6 sm:pb-20 sm:pt-40">
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{ maskImage: "linear-gradient(to bottom, #000 30%, transparent 100%)" }}
-          aria-hidden="true"
-        >
-          <CRTWarp
-            color="#819bc2"
-            backgroundColor="#05010a"
-            speed={0.2}
-            curvature={0.25}
-            scanlineStrength={0.25}
-            scanlineFrequency={285}
-            waveAmplitude={0.22}
-            waveFrequency={4.1}
-            bloom={2.15}
-            bloomRadius={1}
-            noise={0.11}
-            vignette={0.69}
-            brightness={0.9}
-            pixelation={1}
-            rgbShift={0.03}
-            mouseReact={false}
-            dpr={1}
-            fps={24}
-            paused={!!reduceMotion}
-          />
-        </div>
-        <div className="cy-grid" aria-hidden="true" />
-
-        <div className="relative mx-auto max-w-7xl">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="mb-5 font-mono text-xs text-[var(--cy-dim)] sm:text-sm"
-          >
-            <span className="text-[var(--cy-steel)]">omer@lab</span>:~$ ls ./projects
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="cy-title text-6xl font-medium leading-none tracking-tight text-white sm:text-8xl md:text-9xl"
-          >
-            projects<span className="cy-blink text-[var(--cy-steel)]">_</span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 grid gap-6 border-t border-[var(--cy-line)] pt-6 sm:grid-cols-[1fr_auto] sm:items-end"
-          >
-            <p className="max-w-2xl text-base text-gray-300 sm:text-lg">
-              Robots, prosthetics, and the boards that drive them. Mechanical design, embedded
-              systems, and the software that ties them together.
-            </p>
-            <dl className="cy-pixel flex gap-8 text-2xl text-[var(--cy-steel)]">
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-widest text-[var(--cy-dim)]">
-                  entries
-                </dt>
-                <dd>{pad(projects.length)}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-widest text-[var(--cy-dim)]">
-                  status
-                </dt>
-                <dd>ONLINE</dd>
-              </div>
-            </dl>
-          </motion.div>
-        </div>
-      </section>
-
+    <CyPage
+      path="ls ./projects"
+      title="projects"
+      intro="Robots, prosthetics, and the boards that drive them. Mechanical design, embedded systems, and the software that ties them together."
+      stats={[
+        { label: "entries", value: pad(projects.length) },
+        { label: "status", value: "ONLINE" },
+      ]}
+    >
       <section className="relative px-4 pb-24 sm:px-6">
         <div className="mx-auto max-w-7xl">
           {/* Filters */}
@@ -486,6 +379,6 @@ export default function ProjectsPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </main>
+    </CyPage>
   );
 }

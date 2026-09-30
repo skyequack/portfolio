@@ -161,3 +161,32 @@
   .cy-blink { animation: none; }
   .cy-frame, .cy-shot img { transition: none; }
 }
+
+/* Form fields */
+.cy-field {
+  width: 100%;
+  background: rgba(129, 155, 194, 0.04);
+  border: 1px solid var(--cy-line);
+  color: var(--cy-ink);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.875rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.cy-field::placeholder { color: #5f6c82; }
+.cy-field:focus {
+  outline: none;
+  border-color: var(--cy-steel);
+  box-shadow: 0 0 0 1px var(--cy-steel), 0 0 20px -4px rgba(129, 155, 194, 0.5);
+}
+
+/* Timeline rail */
+.cy-rail {
+  position: absolute;
+  left: 7px;
+  top: 0.4rem;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--cy-steel), var(--cy-line) 30%, transparent);
+}
